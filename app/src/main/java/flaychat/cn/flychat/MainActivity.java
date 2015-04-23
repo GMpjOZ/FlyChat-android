@@ -12,6 +12,7 @@ import android.widget.Button;
 public class MainActivity extends BaseActivity {
 
     private Button welcome;
+    //sasdadd
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
