@@ -8,11 +8,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
+import flaychat.cn.flychat.map.MapActivity;
+
 
 public class MainActivity extends BaseActivity {
 
     private Button welcome;
-    //sasdadd
+    private Button map;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,6 +27,16 @@ public class MainActivity extends BaseActivity {
             public void onClick(View v) {
                 Intent intent=new Intent();
                 intent.setClass(MainActivity.this,WelcomeActivity.class);
+                startActivity(intent);
+            }
+        });
+        map= (Button) findViewById(R.id.map);
+
+        map.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent();
+                intent.setClass(MainActivity.this,MapActivity.class);
                 startActivity(intent);
             }
         });

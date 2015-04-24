@@ -9,4 +9,5 @@
     <string name="network_error">网络错误</string>
     <string name="resourse_error">资源加载错误</string>
     <string name="title_activity_welcome">WelcomeActivity</string>
+    <string name="title_activity_map">MapActivity</string>
 </resources>

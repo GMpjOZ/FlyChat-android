@@ -88,8 +88,10 @@
     <orderEntry type="library" exported="" name="appcompat-v7-21.0.3" level="project" />
     <orderEntry type="library" exported="" name="gson-2.1" level="project" />
     <orderEntry type="library" exported="" name="Volley" level="project" />
+    <orderEntry type="library" exported="" name="baidumapapi_v3_4_0" level="project" />
     <orderEntry type="library" exported="" name="pushservice-4.4.0.71" level="project" />
     <orderEntry type="library" exported="" name="roboguice-3.0.1" level="project" />
+    <orderEntry type="library" exported="" name="locSDK_5.0" level="project" />
     <orderEntry type="library" exported="" name="support-v4-21.0.3" level="project" />
     <orderEntry type="library" exported="" name="support-annotations-21.0.3" level="project" />
   </component>
