@@ -14,9 +14,10 @@ android {
     buildTypes {
         release {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-androiroboguice-3.0.1.jar\n' +
-                    'pushservice-4.4.0.71.jar\n' +
-                    'gson-2.1.jard.txt'), 'proguard-rules.pro'
+//            proguardFiles getDefaultProguardFile('proguard-androiroboguice-3.0.1.jar\n' +
+//                    'pushservice-4.4.0.71.jar\n' +
+//                    'gson-2.1.jard.txt'), 'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
 }

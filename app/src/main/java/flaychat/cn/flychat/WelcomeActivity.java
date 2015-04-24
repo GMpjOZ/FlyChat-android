@@ -25,7 +25,7 @@ public class WelcomeActivity extends ActionBarActivity {
         mWebView.getSettings().setLayoutAlgorithm(WebSettings.LayoutAlgorithm.SINGLE_COLUMN);
 //		mWebView.loadUrl("http://112.124.22.238:8081/pushserver/start_android.html");
 //		mWebView.loadUrl("http://www.baidu.com");
-		mWebView.loadUrl("http://http://192.168.0.114:8080/FlayChat/NewFile.html");
+		mWebView.loadUrl(API.WelcomeURL);
 
     }
 
