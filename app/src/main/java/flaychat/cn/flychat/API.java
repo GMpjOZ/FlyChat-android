@@ -8,4 +8,6 @@ public class API {
     public static String URL="http://192.168.1.100:8080/FlayChat/";
 
     public static String WelcomeURL=URL+"NewFile.html";
+
+    public static  String GetUser=URL+"";
 }
