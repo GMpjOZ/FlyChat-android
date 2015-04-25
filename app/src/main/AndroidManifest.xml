@@ -12,6 +12,7 @@
     <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+
     <application
         android:name=".sys.FlayChatApplication"
         android:allowBackup="true"
@@ -92,7 +93,15 @@
             android:name="api_key"
             android:value="fxc7ctt2N18eY3gKAvYuDgiV" />
 
+        <activity
+            android:name="flaychat.cn.flychat.chat.ChatActivity"
+            android:alwaysRetainTaskState="true"
+            android:configChanges="locale|keyboardHidden|orientation"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/Default.NoTitleBar.Chat"
+            android:windowSoftInputMode="stateHidden|adjustResize"  >
+        </activity>
     </application>
-
 
 </manifest>

@@ -9,4 +9,16 @@
     <string name="network_error">网络错误</string>
     <string name="resourse_error">资源加载错误</string>
     <string name="title_activity_welcome">WelcomeActivity</string>
+    <string name="button_to_chat">跳转到聊天</string>
+    <string name="title_activity_chat">ChatActivity</string>
+    <string name="send">发送</string>
+    <string name="chat">这里是chat页面</string>
+
+    <!-- 上拉 下拉 -->
+    <string name="xlistview_header_hint_normal">下拉刷新</string>
+    <string name="xlistview_header_last_time">上次更新：</string>
+    <string name="xlistview_footer_hint_ready">松开载入更多</string>
+    <string name="xlistview_footer_hint_normal">查看更多</string>
+    <string name="xlistview_header_hint_loading">正在刷新...</string>
+    <string name="xlistview_header_hint_ready">释放立即刷新</string>
 </resources>
