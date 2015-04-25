@@ -72,8 +72,14 @@ public class MapActivity extends BaseActivity {
                 MapStatusUpdate u = MapStatusUpdateFactory.newLatLng(ll);
                 mBaiduMap.animateMapStatus(u);
             }
+
+            PostLocation postLocation=new PostLocation();
+            new Thread(postLocation).start();
+            
             ShowUsersThread thread=new ShowUsersThread();
             new Thread(thread).start();
+
+
         }
     };
     @Override
