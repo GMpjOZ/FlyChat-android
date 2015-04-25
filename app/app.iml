@@ -85,15 +85,27 @@
     </content>
     <orderEntry type="jdk" jdkName="Android API 21 Platform" jdkType="Android SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
+<<<<<<< HEAD
+=======
     <orderEntry type="library" exported="" name="appcompat-v7-21.0.3" level="project" />
     <orderEntry type="library" exported="" name="gson-2.1" level="project" />
     <orderEntry type="library" exported="" name="Volley" level="project" />
     <orderEntry type="library" exported="" name="baidumapapi_v3_4_0" level="project" />
+>>>>>>> e29a9a06b8e71373ca5d0528a3b7a9a3260d4095
     <orderEntry type="library" exported="" name="pushservice-4.4.0.71" level="project" />
+    <orderEntry type="library" exported="" name="android-support-v4" level="project" />
+    <orderEntry type="library" exported="" name="appcompat-v7-21.0.3" level="project" />
     <orderEntry type="library" exported="" name="roboguice-3.0.1" level="project" />
+<<<<<<< HEAD
+=======
     <orderEntry type="library" exported="" name="locSDK_5.0" level="project" />
     <orderEntry type="library" exported="" name="support-v4-21.0.3" level="project" />
+>>>>>>> e29a9a06b8e71373ca5d0528a3b7a9a3260d4095
     <orderEntry type="library" exported="" name="support-annotations-21.0.3" level="project" />
+    <orderEntry type="library" exported="" name="nineoldandroids-2.4.0" level="project" />
+    <orderEntry type="library" exported="" name="support-v4-21.0.3" level="project" />
+    <orderEntry type="library" exported="" name="Volley" level="project" />
+    <orderEntry type="library" exported="" name="gson-2.1" level="project" />
   </component>
 </module>
 
