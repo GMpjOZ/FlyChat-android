@@ -7,7 +7,7 @@
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
-<<<<<<< HEAD
+
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
 =======
@@ -126,7 +126,7 @@
             android:value="fxc7ctt2N18eY3gKAvYuDgiV" />
 
         <activity
-<<<<<<< HEAD
+
             android:name="flaychat.cn.flychat.chat.ChatActivity"
             android:alwaysRetainTaskState="true"
             android:configChanges="locale|keyboardHidden|orientation"
@@ -134,10 +134,12 @@
             android:screenOrientation="portrait"
             android:theme="@style/Default.NoTitleBar.Chat"
             android:windowSoftInputMode="stateHidden|adjustResize"  >
-=======
+        </activity>
+
+        <activity
             android:name=".map.MapActivity"
             android:label="@string/title_activity_map" >
->>>>>>> e29a9a06b8e71373ca5d0528a3b7a9a3260d4095
+
         </activity>
     </application>
 

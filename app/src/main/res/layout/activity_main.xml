@@ -21,7 +21,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-<<<<<<< HEAD
+
         android:text="@string/button_to_chat"
         android:id="@+id/button"
         android:layout_alignParentBottom="true"
@@ -30,11 +30,14 @@
         android:background="@android:drawable/editbox_background"
         android:onClick="click"/>
 
-=======
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="map"
         android:id="@+id/map"
         android:layout_below="@+id/welcome"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
->>>>>>> e29a9a06b8e71373ca5d0528a3b7a9a3260d4095
+
 </RelativeLayout>

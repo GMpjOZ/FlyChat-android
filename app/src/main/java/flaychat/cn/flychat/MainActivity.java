@@ -7,11 +7,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
-<<<<<<< HEAD
+
 import flaychat.cn.flychat.chat.ChatActivity;
-=======
+
 import flaychat.cn.flychat.map.MapActivity;
->>>>>>> e29a9a06b8e71373ca5d0528a3b7a9a3260d4095
+
 
 
 public class MainActivity extends BaseActivity {
