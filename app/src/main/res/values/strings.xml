@@ -9,6 +9,7 @@
     <string name="network_error">网络错误</string>
     <string name="resourse_error">资源加载错误</string>
     <string name="title_activity_welcome">WelcomeActivity</string>
+<<<<<<< HEAD
     <string name="button_to_chat">跳转到聊天</string>
     <string name="title_activity_chat">ChatActivity</string>
     <string name="send">发送</string>
@@ -21,4 +22,7 @@
     <string name="xlistview_footer_hint_normal">查看更多</string>
     <string name="xlistview_header_hint_loading">正在刷新...</string>
     <string name="xlistview_header_hint_ready">释放立即刷新</string>
+=======
+    <string name="title_activity_map">MapActivity</string>
+>>>>>>> e29a9a06b8e71373ca5d0528a3b7a9a3260d4095
 </resources>
