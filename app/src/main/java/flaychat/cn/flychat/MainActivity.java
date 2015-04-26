@@ -10,6 +10,7 @@ import android.widget.Button;
 
 import flaychat.cn.flychat.chat.ChatActivity;
 
+import flaychat.cn.flychat.game.GameActivity;
 import flaychat.cn.flychat.map.MapActivity;
 
 
@@ -18,6 +19,7 @@ public class MainActivity extends BaseActivity {
 
     private Button welcome;
     private Button map;
+    private Button game;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +42,17 @@ public class MainActivity extends BaseActivity {
             public void onClick(View v) {
                 Intent intent=new Intent();
                 intent.setClass(MainActivity.this,MapActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        game= (Button) findViewById(R.id.game);
+
+        game.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent();
+                intent.setClass(MainActivity.this,GameActivity.class);
                 startActivity(intent);
             }
         });

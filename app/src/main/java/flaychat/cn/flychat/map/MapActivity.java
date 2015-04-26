@@ -1,5 +1,6 @@
 package flaychat.cn.flychat.map;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -75,7 +76,7 @@ public class MapActivity extends BaseActivity {
 
             PostLocation postLocation=new PostLocation();
             new Thread(postLocation).start();
-            
+
             ShowUsersThread thread=new ShowUsersThread();
             new Thread(thread).start();
 
@@ -99,8 +100,9 @@ public class MapActivity extends BaseActivity {
         UiSettings ui=mBaiduMap.getUiSettings();
         ui.setCompassEnabled(false);
         ui.setRotateGesturesEnabled(false);
+        ui.setOverlookingGesturesEnabled(false);
 
-        Log.w("最小缩放",mBaiduMap.getMinZoomLevel()+"");
+
         LocationClientOption option = new LocationClientOption();
         option.setOpenGps(true);// 打开gps
         option.setCoorType("bd09ll"); // 设置坐标类型
@@ -111,16 +113,16 @@ public class MapActivity extends BaseActivity {
         mBaiduMap.setOnMarkerClickListener(new BaiduMap.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(Marker marker) {
-                Log.w("图标",marker.getPosition()+"");
+
                 Button button = new Button(getApplicationContext());
                 button.setBackgroundResource(R.drawable.popup);
                 for(int i=0;i<markers.size();i++){
-                    Log.w("图标",marker+"");
-                    Log.w("图标循环",markers.get(i)+"");
+
 
                     if(marker==markers.get(i)){
+                        Log.w("length",users.size()+"");
                         button.setText(users.get(i).getName());
-                        button.setTextColor(000000);
+                        button.setTextColor(Color.parseColor("#000000"));
                         LatLng m_point = marker.getPosition();
                         mInfoWindow = new InfoWindow(button,m_point,-47);
                         mBaiduMap.showInfoWindow(mInfoWindow);
@@ -145,7 +147,7 @@ public class MapActivity extends BaseActivity {
             mHttpClient.post(API.PostLocation,map,0,new RequestListener() {
                 @Override
                 public void onPreRequest() {
-
+                    Log.w("","请求重发");
                 }
 
                 @Override
@@ -177,6 +179,7 @@ public class MapActivity extends BaseActivity {
                 @Override
                 public void onPreRequest() {
 
+                    Log.w("","请求重发");
                 }
 
                 @Override
@@ -185,9 +188,9 @@ public class MapActivity extends BaseActivity {
                     Log.w("","获取用户信息成功");
                     List<User> allusers=response.getList(User.class);
 
-                    List<User> users1=searchUser(allusers);
+                    users=searchUser(allusers);
                     Message msg = Message.obtain();
-                    msg.obj=users1;
+                    msg.obj=users;
                     updateMarkerHandler.sendMessage(msg);
 
 
@@ -215,7 +218,7 @@ public class MapActivity extends BaseActivity {
 
         }
     }
-//
+
 //    public List<User> getUser(){
 //        User user1=new User();
 //        user1.setLatitude(31.9131313);
@@ -258,7 +261,7 @@ public class MapActivity extends BaseActivity {
     Handler updateMarkerHandler = new Handler(){
         @Override
         public void handleMessage(Message msg) {
-            List<User> users= (List<User>) msg.obj;
+//            List<User> musers= (List<User>) msg.obj;
 
 
             int i=0;

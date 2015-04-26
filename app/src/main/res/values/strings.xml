@@ -24,4 +24,8 @@
     <string name="xlistview_header_hint_ready">释放立即刷新</string>
 
     <string name="title_activity_map">MapActivity</string>
+    <string name="title_activity_game">GameActivity</string>
+
+    <string name="dialogtitle">请猜灯谜</string>
+    <string name="dialogmessage">三人行（打一字）</string>
 </resources>
