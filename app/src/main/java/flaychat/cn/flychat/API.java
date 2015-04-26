@@ -12,4 +12,6 @@ public class API {
     public static  String GetUser=URL+"GetUserServlet";
 
     public static  String PostLocation=URL+"PostLocationServlet";
+
+    public static  String GetLanterns=URL+"GetLanternsServlet";
 }
