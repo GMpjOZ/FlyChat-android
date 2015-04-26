@@ -72,8 +72,14 @@ public class MapActivity extends BaseActivity {
                 MapStatusUpdate u = MapStatusUpdateFactory.newLatLng(ll);
                 mBaiduMap.animateMapStatus(u);
             }
+
+            PostLocation postLocation=new PostLocation();
+            new Thread(postLocation).start();
+            
             ShowUsersThread thread=new ShowUsersThread();
             new Thread(thread).start();
+
+
         }
     };
     @Override
@@ -114,9 +120,7 @@ public class MapActivity extends BaseActivity {
 
                     if(marker==markers.get(i)){
                         button.setText(users.get(i).getName());
-                        Log.w("name", users.get(i).getName());
-                        Log.w("button", button.getText() + "");
-                        Log.w("test","1");
+                        button.setTextColor(000000);
                         LatLng m_point = marker.getPosition();
                         mInfoWindow = new InfoWindow(button,m_point,-47);
                         mBaiduMap.showInfoWindow(mInfoWindow);
@@ -129,10 +133,45 @@ public class MapActivity extends BaseActivity {
 
 
     }
+
+    class PostLocation implements Runnable{
+        @Override
+        public void run() {
+            Map<String,String> map=new HashMap<String,String>();
+            map.put("latitude",ll.latitude+"");
+            map.put("longitude",ll.longitude+"");
+            map.put("id",123+"");
+            Log.w("","发送自己位置信息");
+            mHttpClient.post(API.PostLocation,map,0,new RequestListener() {
+                @Override
+                public void onPreRequest() {
+
+                }
+
+                @Override
+                public void onRequestSuccess(BaseResponse response) {
+
+                    Log.w("","发送信息成功");
+                }
+
+                @Override
+                public void onRequestError(int code, String msg) {
+                    Log.e("","发送请求错误");
+                }
+
+                @Override
+                public void onRequestFail(int code, String msg) {
+                    Log.e("","发送请求错误");
+                }
+            });
+        }
+    }
+
      class ShowUsersThread implements Runnable {
 
         public void run() {
 
+            Log.w("","获取用户信息");
             mHttpClient.get(API.GetUser,0, new RequestListener(){
 
                 @Override
@@ -143,6 +182,7 @@ public class MapActivity extends BaseActivity {
                 @Override
                 public void onRequestSuccess(BaseResponse response) {
 
+                    Log.w("","获取用户信息成功");
                     List<User> allusers=response.getList(User.class);
 
                     List<User> users1=searchUser(allusers);
@@ -156,11 +196,13 @@ public class MapActivity extends BaseActivity {
                 @Override
                 public void onRequestError(int code, String msg) {
 
+                    Log.e("","获取请求错误");
                 }
 
                 @Override
                 public void onRequestFail(int code, String msg) {
 
+                    Log.e("","获取请求失败");
                 }
             });
 
