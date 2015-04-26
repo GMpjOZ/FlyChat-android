@@ -66,14 +66,14 @@ import android.widget.AdapterView.OnItemClickListener;
 
 public class ChatActivity extends SwipeBackActivity implements
 	OnTouchListener, OnClickListener, IXListViewListener{
-	public static final int NEW_MESSAGE = 0x001;// �յ���Ϣ
+	public static final int NEW_MESSAGE = 0x001;//收到消息
 	private TransitionEffect mEffects[] = { TransitionEffect.Standard,
 			TransitionEffect.Tablet, TransitionEffect.CubeIn,
 			TransitionEffect.CubeOut, TransitionEffect.FlipVertical,
 			TransitionEffect.FlipHorizontal, TransitionEffect.Stack,
 			TransitionEffect.ZoomIn, TransitionEffect.ZoomOut,
 			TransitionEffect.RotateUp, TransitionEffect.RotateDown,
-			TransitionEffect.Accordion, };// ���鷭ҳЧ��
+			TransitionEffect.Accordion, };// 表情翻页效果
 	/**
 	 * TODO
 	 * private PushApplication mApplication;
@@ -168,7 +168,7 @@ public class ChatActivity extends SwipeBackActivity implements
 		// TODO Auto-generated method stub
 		GridView gv = new GridView(this);
 		gv.setNumColumns(7);
-		gv.setSelector(new ColorDrawable(Color.TRANSPARENT));// ����GridViewĬ�ϵ��Ч��
+		gv.setSelector(new ColorDrawable(Color.TRANSPARENT));// 屏蔽GridView默认点击效果
 		gv.setBackgroundColor(Color.TRANSPARENT);
 		gv.setCacheColorHint(Color.TRANSPARENT);
 		gv.setHorizontalSpacing(1);
@@ -186,7 +186,7 @@ public class ChatActivity extends SwipeBackActivity implements
 					long arg3) {
 				// TODO Auto-generated method stub
 				/*TODO
-				if (arg2 == PushApplication.NUM) {// ɾ����λ��
+				if (arg2 == PushApplication.NUM) {// 删除键的位置
 					int selection = msgEt.getSelectionStart();
 					String text = msgEt.getText().toString();
 					if (selection > 0) {
@@ -201,7 +201,7 @@ public class ChatActivity extends SwipeBackActivity implements
 					}
 				} else {
 					int count = currentPage * PushApplication.NUM + arg2;
-					// ע�͵Ĳ��֣���EditText����ʾ�ַ�
+					// ע注释的部分在EditText中显示字符串
 					// String ori = msgEt.getText().toString();
 					// int index = msgEt.getSelectionStart();
 					// StringBuilder stringBuilder = new StringBuilder(ori);
@@ -209,7 +209,7 @@ public class ChatActivity extends SwipeBackActivity implements
 					// msgEt.setText(stringBuilder.toString());
 					// msgEt.setSelection(index + keys.get(count).length());
 
-					// �����ⲿ�֣���EditText����ʾ����
+					// 下面这部分在EditText中显示表情
 					Bitmap bitmap = BitmapFactory.decodeResource(
 							getResources(), (Integer) PushApplication
 									.getInstance().getFaceMap().values()
@@ -219,18 +219,15 @@ public class ChatActivity extends SwipeBackActivity implements
 						int rawWidth = bitmap.getHeight();
 						int newHeight = 40;
 						int newWidth = 40;
-						// ������������
-						float heightScale = ((float) newHeight) / rawHeigh;
-						float widthScale = ((float) newWidth) / rawWidth;
-						// �½�������
+						// 新建立矩阵
 						Matrix matrix = new Matrix();
 						matrix.postScale(heightScale, widthScale);
-						// ����ͼƬ����ת�Ƕ�
+						// 设置图片的旋转角度
 						// matrix.postRotate(-30);
-						// ����ͼƬ����б
+						// 设置图片的倾斜
 						// matrix.postSkew(0.1f, 0.1f);
-						// ��ͼƬ��Сѹ��
-						// ѹ����ͼƬ�Ŀ�͸��Լ�kB��С���仯
+						// 将图片大小压缩
+						// 压缩后图片的宽和高以及kB大小均会变化
 						Bitmap newBitmap = Bitmap.createBitmap(bitmap, 0, 0,
 								rawWidth, rawHeigh, matrix, true);
 						ImageSpan imageSpan = new ImageSpan(ChatActivity.this,
@@ -263,7 +260,7 @@ public class ChatActivity extends SwipeBackActivity implements
 		params = getWindow().getAttributes();
 
 		mMsgListView = (MsgListView) findViewById(R.id.msg_listView);
-		// ����ListView���ر�������뷨
+        // 触摸ListView隐藏表情和输入法
 		mMsgListView.setOnTouchListener(this);
 		mMsgListView.setPullLoadEnable(false);
 		mMsgListView.setXListViewListener(this);
@@ -329,8 +326,8 @@ public class ChatActivity extends SwipeBackActivity implements
 		faceBtn.setOnClickListener(this);
 		sendBtn.setOnClickListener(this);
 	}
-	
-	// ��ֹ��pageview�ҹ���
+
+    // 防止乱pageview乱滚动
 		private OnTouchListener forbidenScroll() {
 			return new OnTouchListener() {
 				public boolean onTouch(View v, MotionEvent event) {
@@ -341,13 +338,62 @@ public class ChatActivity extends SwipeBackActivity implements
 				}
 			};
 		}
-		
-		/**
-		 * �������ûд
-		 */
+
+    /**
+     * 还没写完
+     */
 		@Override
 		public void onClick(View v){
-			
+            switch (v.getId()) {
+                case R.id.face_btn:
+                    if (!isFaceShow) {
+                        imm.hideSoftInputFromWindow(msgEt.getWindowToken(), 0);
+                        try {
+                            Thread.sleep(80);// 解决此时会黑一下屏幕的问题
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        faceLinearLayout.setVisibility(View.VISIBLE);
+                        isFaceShow = true;
+                    } else {
+                        faceLinearLayout.setVisibility(View.GONE);
+                        isFaceShow = false;
+                    }
+                    break;
+                /*TODO
+                case R.id.send_btn:// 发送消息
+                    String msg = msgEt.getText().toString();
+                    MessageItem item = new MessageItem(MessageItem.MESSAGE_TYPE_TEXT,
+                            mSpUtil.getNick(), System.currentTimeMillis(), msg,
+                            mSpUtil.getHeadIcon(), false, 0);
+                    adapter.upDateMsg(item);
+                    // if (adapter.getCount() - 10 > 10) {
+                    // L.i("begin to remove...");
+                    // adapter.removeHeadMsg();
+                    // MsgPagerNum--;
+                    // }
+                    mMsgListView.setSelection(adapter.getCount() - 1);
+                    mMsgDB.saveMsg(mFromUser.getUserId(), item);
+                    msgEt.setText("");
+                    com.way.bean.Message msgItem = new com.way.bean.Message(
+                            System.currentTimeMillis(), msg, "");
+                    new SendMsgAsyncTask(mGson.toJson(msgItem), mFromUser.getUserId())
+                            .send();
+                    RecentItem recentItem = new RecentItem(mFromUser.getUserId(),
+                            mFromUser.getHeadIcon(), mFromUser.getNick(), msg, 0,
+                            System.currentTimeMillis());
+                    mRecentDB.saveRecent(recentItem);
+                    break;*/
+                //点击返回键返回
+                case R.id.ivTitleBtnLeft:
+                    finish();
+                    break;
+                /*
+                case R.id.ivTitleBtnRigh:
+                    break;*/
+                default:
+                    break;
+            }
 		}
 		
 		@Override
@@ -355,10 +401,10 @@ public class ChatActivity extends SwipeBackActivity implements
 			// TODO Auto-generated method stub
 
 		}
-		
-		/**
-		 * �������ûд
-		 */
+
+    /**
+     * 还没写完
+     */
 		@Override
 		public void onRefresh() {
 			// TODO Auto-generated method stub

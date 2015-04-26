@@ -39,7 +39,7 @@ public class FaceAdapter extends BaseAdapter {
 	@Override
 	public int getCount() {
 		return currentPage;/*TODO
-							这个是自己临时写�?/
+							这个是自己临时写的*/
 		/*TODO
 		return PushApplication.NUM + 1;*/
 	}
