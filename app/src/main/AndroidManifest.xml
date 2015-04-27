@@ -9,7 +9,6 @@
     <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.USE_CREDENTIALS" />
     <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
@@ -35,9 +34,6 @@
     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
     <!-- 允许应用读取低级别的系统日志文件 -->
     <uses-permission android:name="android.permission.READ_LOGS" />
-
-
-
 
     <application
         android:name=".sys.FlayChatApplication"
@@ -145,6 +141,18 @@
         <activity
             android:name=".game.GameActivity"
             android:label="@string/title_activity_game" >
+        </activity>
+        <activity
+            android:name=".contact.ContactActivity"
+            android:label="@string/title_activity_connect" >
+        </activity>
+        <activity
+            android:name=".register.RegisterActivity"
+            android:label="register" >
+        </activity>
+        <activity
+            android:name=".MyFragmentActivity"
+            android:label="@string/title_activity_my_fragment" >
         </activity>
     </application>
 

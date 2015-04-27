@@ -10,9 +10,10 @@ import android.widget.Button;
 
 import flaychat.cn.flychat.chat.ChatActivity;
 
+import flaychat.cn.flychat.contact.ContactActivity;
 import flaychat.cn.flychat.game.GameActivity;
 import flaychat.cn.flychat.map.MapActivity;
-
+import flaychat.cn.flychat.register.RegisterActivity;
 
 
 public class MainActivity extends BaseActivity {
@@ -20,6 +21,8 @@ public class MainActivity extends BaseActivity {
     private Button welcome;
     private Button map;
     private Button game;
+    private Button contacts;
+    private Button register;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +56,28 @@ public class MainActivity extends BaseActivity {
             public void onClick(View v) {
                 Intent intent=new Intent();
                 intent.setClass(MainActivity.this,GameActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        contacts= (Button) findViewById(R.id.contacts);
+
+        contacts.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent();
+                intent.setClass(MainActivity.this,ContactActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        register= (Button) findViewById(R.id.register);
+
+        register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent();
+                intent.setClass(MainActivity.this,RegisterActivity.class);
                 startActivity(intent);
             }
         });

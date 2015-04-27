@@ -28,4 +28,6 @@
 
     <string name="dialogtitle">请猜灯谜</string>
     <string name="dialogmessage">三人行（打一字）</string>
+    <string name="title_activity_connect">ConnectActivity</string>
+    <string name="title_activity_my_fragment">MyFragmentActivity</string>
 </resources>
