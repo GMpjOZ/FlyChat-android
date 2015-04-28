@@ -1,5 +1,6 @@
 package flaychat.cn.flychat.register;
 
+import android.app.AlertDialog;
 import android.app.Application;
 import android.app.Dialog;
 import android.content.DialogInterface;
@@ -17,8 +18,14 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ViewFlipper;
 
+import java.util.HashMap;
+import java.util.Map;
+
+import flaychat.cn.flychat.API;
 import flaychat.cn.flychat.BaseActivity;
 import flaychat.cn.flychat.R;
+import flaychat.cn.flychat.http.BaseResponse;
+import flaychat.cn.flychat.http.RequestListener;
 import flaychat.cn.flychat.sys.FlayChatApplication;
 
 
@@ -122,6 +129,39 @@ public class RegisterActivity extends BaseActivity implements OnClickListener,
 				if (mCurrentStep.validate()) {
 					mCurrentStep.doNext();
 				}
+
+                Map<String,String> map=new HashMap<String,String>();
+                map.put("phone",mStepPhone.getPhoneNumber());
+                map.put("password",mStepSetPassword.getPassword());
+                map.put("name",mStepBaseInfo.getName());
+                map.put("sex",mStepBaseInfo.getSex()+"");
+                map.put("birthday",mStepBirthday.getData());
+                Log.w("mHttpClient",mHttpClient.toString());
+                mHttpClient.post(API.Register,map,0,new RequestListener() {
+                    @Override
+                    public void onPreRequest() {
+                        Log.w("重发","重发");
+                    }
+
+                    @Override
+                    public void onRequestSuccess(BaseResponse response) {
+                        Log.w("成功","成功");
+                        AlertDialog.Builder builder=new AlertDialog.Builder(getApplicationContext())
+                                .setMessage("注册成功");
+                        AlertDialog dialog=builder.create();
+                        dialog.show();
+                    }
+
+                    @Override
+                    public void onRequestError(int code, String msg) {
+                        Log.w("错误","错误");
+                    }
+
+                    @Override
+                    public void onRequestFail(int code, String msg) {
+                        Log.w("失败","失败");
+                    }
+                });
 			}
 			break;
 		}
@@ -239,6 +279,7 @@ public class RegisterActivity extends BaseActivity implements OnClickListener,
 		case 1:
 			if (mStepPhone == null) {
 				mStepPhone = new StepPhone(this, mVfFlipper.getChildAt(0));
+
 			}
 //			mHeaderLayout.setTitleRightText("注册新账号", null, "1/6");
 			mBtnPrevious.setText("返    回");
@@ -246,8 +287,10 @@ public class RegisterActivity extends BaseActivity implements OnClickListener,
 			return mStepPhone;
 
 		case 2:
+            Log.w("mStepPhone2",mStepPhone.getPhoneNumber()+"");
 			if (mStepVerify == null) {
 				mStepVerify = new StepVerify(this, mVfFlipper.getChildAt(1));
+                Log.w("mStepVerify",mStepVerify+"");
 			}
 //			mHeaderLayout.setTitleRightText("填写验证码", null, "2/6");
 			mBtnPrevious.setText("上一步");
@@ -258,6 +301,7 @@ public class RegisterActivity extends BaseActivity implements OnClickListener,
 			if (mStepSetPassword == null) {
 				mStepSetPassword = new StepSetPassword(this,
 						mVfFlipper.getChildAt(2));
+
 			}
 //			mHeaderLayout.setTitleRightText("设置密码", null, "3/6");
 			mBtnPrevious.setText("上一步");
@@ -265,8 +309,10 @@ public class RegisterActivity extends BaseActivity implements OnClickListener,
 			return mStepSetPassword;
 
 		case 4:
+            Log.w("mStepSetPassword",mStepSetPassword.getPassword()+"");
 			if (mStepBaseInfo == null) {
 				mStepBaseInfo = new StepBaseInfo(this, mVfFlipper.getChildAt(3));
+
 			}
 //			mHeaderLayout.setTitleRightText("填写基本资料", null, "4/6");
 			mBtnPrevious.setText("上一步");
@@ -274,8 +320,11 @@ public class RegisterActivity extends BaseActivity implements OnClickListener,
 			return mStepBaseInfo;
 
 		case 5:
+            Log.w("mStepBaseInfo",mStepBaseInfo.getName()+"");
+            Log.w("mStepBaseInfo",mStepBaseInfo.getSex()+"");
 			if (mStepBirthday == null) {
 				mStepBirthday = new StepBirthday(this, mVfFlipper.getChildAt(4));
+
 			}
 //			mHeaderLayout.setTitleRightText("您的生日", null, "5/6");
 			mBtnPrevious.setText("上一步");
@@ -283,8 +332,10 @@ public class RegisterActivity extends BaseActivity implements OnClickListener,
 			return mStepBirthday;
 
 		case 6:
+            Log.w("mStepBirthday",mStepBirthday.getData()+"");
 			if (mStepPhoto == null) {
 				mStepPhoto = new StepPhoto(this, mVfFlipper.getChildAt(5));
+                Log.w("mStepPhoto",mStepPhoto+"");
 			}
 //			mHeaderLayout.setTitleRightText("设置头像", null, "6/6");
 			mBtnPrevious.setText("上一步");

@@ -1,5 +1,6 @@
 package flaychat.cn.flychat.register;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -84,6 +85,11 @@ public class StepBirthday extends RegisterStep implements OnDateChangedListener 
 		mDpBirthday = (DatePicker) findViewById(R.id.reg_birthday_dp_birthday);
 	}
 
+    public String getData(){
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String dateString = formatter.format(mSelectDate);
+        return dateString;
+    }
 	@Override
 	public void initEvents() {
 
