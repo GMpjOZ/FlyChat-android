@@ -114,5 +114,17 @@
     <color name="qzone_picviewer_loading_bg">#99000000</color>
     <color name="qzone_picviewer_loading_loaded">#ffffffff</color>
     <color name="qzone_picviewer_description">#ffe0e0e0</color>
-     <color name="holo_blue">#FF33E5B5</color>
+    <color name="holo_blue">#FF33E5B5</color>
+    <color name="devideline">#ffd0c9b8</color>
+
+    <color name="background_normal">#fffffbf0</color>
+    <color name="header_normal">#ffe74c3c</color>
+    <color name="header_pressed">#ffc0392b</color>
+    <color name="menu_section_header">#FFDDDDDD</color>
+    <color name="text_color">#ffffff</color>
+    <color name="notes_color">#ff777777</color>
+    <color name="font_value">#ff888271</color>
+    <color name="bg_tips_normal">#ffe3ded0</color>
+    <color name="bg_tips_press">#ffccc8bc</color>
+    <color name="background_dark">#ffd4ccc0</color>
 </resources>
