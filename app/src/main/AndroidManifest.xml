@@ -150,10 +150,7 @@
             android:name=".register.RegisterActivity"
             android:label="register" >
         </activity>
-        <activity
-            android:name=".MyFragmentActivity"
-            android:label="@string/title_activity_my_fragment" >
-        </activity>
+
     </application>
 
 </manifest>
