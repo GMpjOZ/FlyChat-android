@@ -76,12 +76,12 @@ public class StepBaseInfo extends RegisterStep implements TextWatcher
 		return mIsChange;
 	}
 
-//	@Override
-//	public void onCheckedChanged(RadioGroup group, int checkedId) {
-//		mIsChange = true;
-//		//如果mIsGenderAlert为false时弹出对话框，即只有第一次才会弹
-//		if (!mIsGenderAlert) {
-//			mIsGenderAlert = true;
+
+	public void onCheckedChanged(RadioGroup group, int checkedId) {
+		mIsChange = true;
+		//如果mIsGenderAlert为false时弹出对话框，即只有第一次才会弹
+		if (!mIsGenderAlert) {
+			mIsGenderAlert = true;
 //			mBaseDialog = BaseDialog.getDialog(mContext, "提示", "注册成功后性别将不可更改",
 //					"确认", new DialogInterface.OnClickListener() {
 //
@@ -91,19 +91,27 @@ public class StepBaseInfo extends RegisterStep implements TextWatcher
 //						}
 //					});
 //			mBaseDialog.show();
-//		}
-//
-//		switch (checkedId) {
-//		case R.id.reg_baseinfo_rb_male:
-//			mRbMale.setChecked(true);//性别已经被设置
-//			break;
-//
-//		case R.id.reg_baseinfo_rb_female:
-//			mRbFemale.setChecked(true);
-//			break;
-//		}
-//	}
+		}
 
+		switch (checkedId) {
+		case R.id.reg_baseinfo_rb_male:
+			mRbMale.setChecked(true);//性别已经被设置
+			break;
+
+		case R.id.reg_baseinfo_rb_female:
+			mRbFemale.setChecked(true);
+			break;
+		}
+	}
+
+    public String getName(){
+        return mEtName.getText().toString();
+    }
+    public int getSex(){
+        if(mRbMale.isChecked()==true)
+            return 0;
+        else return 1;
+    }
 	@Override
 	public void afterTextChanged(Editable s) {
 

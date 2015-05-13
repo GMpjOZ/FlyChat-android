@@ -144,28 +144,28 @@ public class MapActivity extends BaseActivity {
             map.put("longitude",ll.longitude+"");
             map.put("id",123+"");
             Log.w("","发送自己位置信息");
-            mHttpClient.post(API.PostLocation,map,0,new RequestListener() {
-                @Override
-                public void onPreRequest() {
-                    Log.w("","请求重发");
-                }
-
-                @Override
-                public void onRequestSuccess(BaseResponse response) {
-
-                    Log.w("","发送信息成功");
-                }
-
-                @Override
-                public void onRequestError(int code, String msg) {
-                    Log.e("","发送请求错误");
-                }
-
-                @Override
-                public void onRequestFail(int code, String msg) {
-                    Log.e("","发送请求错误");
-                }
-            });
+//            mHttpClient.post(API.PostLocation,map,0,new RequestListener() {
+//                @Override
+//                public void onPreRequest() {
+//                    Log.w("","请求重发");
+//                }
+//
+//                @Override
+//                public void onRequestSuccess(BaseResponse response) {
+//
+//                    Log.w("","发送信息成功");
+//                }
+//
+//                @Override
+//                public void onRequestError(int code, String msg) {
+//                    Log.e("","发送请求错误");
+//                }
+//
+//                @Override
+//                public void onRequestFail(int code, String msg) {
+//                    Log.e("","发送请求错误");
+//                }
+//            });
         }
     }
 
@@ -173,76 +173,76 @@ public class MapActivity extends BaseActivity {
 
         public void run() {
 
-            Log.w("","获取用户信息");
-            mHttpClient.get(API.GetUser,0, new RequestListener(){
+//            Log.w("","获取用户信息");
+//            mHttpClient.get(API.GetUser,0, new RequestListener(){
+//
+//                @Override
+//                public void onPreRequest() {
+//
+//                    Log.w("","请求重发");
+//                }
+//
+//                @Override
+//                public void onRequestSuccess(BaseResponse response) {
+//
+//                    Log.w("","获取用户信息成功");
+//                    List<User> allusers=response.getList(User.class);
+//
+//                    users=searchUser(allusers);
+//                    Message msg = Message.obtain();
+//                    msg.obj=users;
+//                    updateMarkerHandler.sendMessage(msg);
+//
+//
+//                }
+//
+//                @Override
+//                public void onRequestError(int code, String msg) {
+//
+//                    Log.e("","获取请求错误");
+//                }
+//
+//                @Override
+//                public void onRequestFail(int code, String msg) {
+//
+//                    Log.e("","获取请求失败");
+//                }
+//            });
 
-                @Override
-                public void onPreRequest() {
-
-                    Log.w("","请求重发");
-                }
-
-                @Override
-                public void onRequestSuccess(BaseResponse response) {
-
-                    Log.w("","获取用户信息成功");
-                    List<User> allusers=response.getList(User.class);
-
+            List<User> allusers=getUser();
+//
                     users=searchUser(allusers);
                     Message msg = Message.obtain();
                     msg.obj=users;
                     updateMarkerHandler.sendMessage(msg);
 
-
-                }
-
-                @Override
-                public void onRequestError(int code, String msg) {
-
-                    Log.e("","获取请求错误");
-                }
-
-                @Override
-                public void onRequestFail(int code, String msg) {
-
-                    Log.e("","获取请求失败");
-                }
-            });
-
-//            List<User> allusers=getUser();
-////
-//                    users=searchUser(allusers);
-//                    Message msg = Message.obtain();
-//                    msg.obj=users;
-//                    updateMarkerHandler.sendMessage(msg);
-
         }
     }
 
-//    public List<User> getUser(){
-//        User user1=new User();
-//        user1.setLatitude(31.9131313);
-//        user1.setLongitude(118.79111);
-//        user1.setName("aa1");
-//        User user2=new User();
-//        user2.setLatitude(31.91233);
-//        user2.setLongitude(118.795345);
-//        user2.setName("aa2");
-//        User user3=new User();
-//        user3.setLatitude(31.914323);
-//        user3.setLongitude(118.795345);
-//        user3.setName("aa3");
-//        User user4=new User();
-//        user4.setLatitude(31.9124234);
-//        user4.setLongitude(118.7923422);
-//        user4.setName("aa4");
-//        List<User> users=new ArrayList<User>();
-//        users.add(user1);
-//        users.add(user2);
-//        users.add(user3);
-//        users.add(user4);
-//        return users;
-//    }
+    public List<User> getUser(){
+        User user1=new User();
+        user1.setLatitude(31.9131313);
+        user1.setLongitude(118.79111);
+        user1.setName("张三");
+        User user2=new User();
+        user2.setLatitude(31.91233);
+        user2.setLongitude(118.795345);
+        user2.setName("李四");
+        User user3=new User();
+        user3.setLatitude(31.914323);
+        user3.setLongitude(118.795345);
+        user3.setName("王五");
+        User user4=new User();
+        user4.setLatitude(31.9124234);
+        user4.setLongitude(118.7923422);
+        user4.setName("小明");
+        List<User> users=new ArrayList<User>();
+        users.add(user1);
+        users.add(user2);
+        users.add(user3);
+        users.add(user4);
+        return users;
+    }
     public List<User> searchUser(List<User> allusers){
 
         List<User> newUser=new ArrayList<User>();

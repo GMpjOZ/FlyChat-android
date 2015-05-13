@@ -17,7 +17,7 @@ import flaychat.cn.flychat.R;
 import flaychat.cn.flychat.util.TextUtils;
 
 
- public class StepVerify extends RegisterStep {
+ public class StepVerify extends RegisterStep implements OnClickListener,TextWatcher{
 
 	private TextView mHtvPhoneNumber;
 	private EditText mEtVerifyCode;
@@ -61,9 +61,9 @@ import flaychat.cn.flychat.util.TextUtils;
 
 	@Override
 	public void initEvents() {
-//		mBtnResend.setOnClickListener(this);
-//		mHtvNoCode.setOnClickListener(this);
-//		mEtVerifyCode.addTextChangedListener(this);
+		mBtnResend.setOnClickListener(this);
+		mHtvNoCode.setOnClickListener(this);
+		mEtVerifyCode.addTextChangedListener(this);
 	}
 
 	@Override

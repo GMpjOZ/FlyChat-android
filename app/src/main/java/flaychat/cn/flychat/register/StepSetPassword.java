@@ -70,6 +70,9 @@ public class StepSetPassword extends RegisterStep implements TextWatcher {
 		return true;
 	}
 
+    public String getPassword(){
+        return mEtPwd.getText().toString();
+    }
 	@Override
 	public boolean isChange() {
 		return mIsChange;

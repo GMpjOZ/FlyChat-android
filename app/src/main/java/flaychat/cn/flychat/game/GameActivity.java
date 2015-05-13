@@ -33,7 +33,7 @@ public class GameActivity extends BaseActivity {
         progressBar= (ProgressBar) findViewById(R.id.lanternsprogressBar);
         progressBar.setVisibility(View.VISIBLE);
 
-
+//
         RequestLanterns requestLanterns=new RequestLanterns();
         new Thread(requestLanterns).start();
     }
@@ -47,7 +47,7 @@ public class GameActivity extends BaseActivity {
 
             AlertDialog.Builder builder=new AlertDialog.Builder(GameActivity.this)
                     .setTitle(R.string.dialogtitle)
-                    .setMessage(lanterns.getMessage())
+                    .setMessage("三人行")
                     .setView(view);
 
             AlertDialog dialog=builder.create();
@@ -74,9 +74,8 @@ public class GameActivity extends BaseActivity {
         Log.w("输入内容",lanternsanswerString);
         boolean b1=lanternsanswerString.equals(lanterns.getAnswer());
         boolean b2=lanternsanswerString==lanterns.getAnswer();
-        Log.w("lanternsanswerString.equals(lanterns.getAnswer())",b1+"");
-        Log.w("lanternsanswerString==lanterns.getAnswer()",b2+"");
-        if(lanternsanswerString.equals(lanterns.getAnswer())){
+
+        if(lanternsanswerString.equals("众")){
             Log.w("","right");
             AlertDialog.Builder builder=new AlertDialog.Builder(GameActivity.this)
                     .setMessage("回答正确");
@@ -94,32 +93,34 @@ public class GameActivity extends BaseActivity {
     class RequestLanterns implements Runnable{
         @Override
         public void run() {
-            mHttpClient.get(API.GetLanterns,0,new RequestListener() {
-                @Override
-                public void onPreRequest() {
-                    Log.w("","请求重发");
-                }
 
-                @Override
-                public void onRequestSuccess(BaseResponse response) {
-                    Log.w("","请求成功");
-                    lanterns=response.getObject(Lanterns.class);
-                    Log.w("lanterns",lanterns.toString());
-                    GameActivity.this.updateBarHandler.sendMessage(new Message());
-                }
+//
+//            mHttpClient.get(API.GetLanterns,0,new RequestListener() {
+//                @Override
+//                public void onPreRequest() {
+//                    Log.w("","请求重发");
+//                }
+//
+//                @Override
+//                public void onRequestSuccess(BaseResponse response) {
+//                    Log.w("","请求成功");
+//                    lanterns=response.getObject(Lanterns.class);
+//                    Log.w("lanterns",lanterns.toString());
+//                    GameActivity.this.updateBarHandler.sendMessage(new Message());
+//                }
+//
+//                @Override
+//                public void onRequestError(int code, String msg) {
+//                    Log.w("","请求错误");
+//                }
+//
+//                @Override
+//                public void onRequestFail(int code, String msg) {
+//                    Log.w("","请求失败");
+//                }
+//            });
 
-                @Override
-                public void onRequestError(int code, String msg) {
-                    Log.w("","请求错误");
-                }
-
-                @Override
-                public void onRequestFail(int code, String msg) {
-                    Log.w("","请求失败");
-                }
-            });
-
-
+            GameActivity.this.updateBarHandler.sendMessage(new Message());
         }
     }
 
