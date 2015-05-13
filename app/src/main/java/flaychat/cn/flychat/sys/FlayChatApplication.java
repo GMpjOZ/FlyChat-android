@@ -5,8 +5,11 @@ import android.app.Application;
 import com.baidu.frontia.FrontiaApplication;
 import com.baidu.mapapi.SDKInitializer;
 
-public class FlayChatApplication extends Application {
+import flaychat.cn.flychat.chat.util.SharePreferenceUtil;
+import flaychat.cn.flychat.model.User;
 
+public class FlayChatApplication extends Application {
+    private static FlayChatApplication mApplication;
 	@Override
 	public void onCreate() {
 		// TODO Auto-generated method stub

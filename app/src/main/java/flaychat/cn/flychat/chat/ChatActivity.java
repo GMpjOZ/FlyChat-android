@@ -38,7 +38,6 @@ import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.TextWatcher;
 import android.text.style.ImageSpan;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.Menu;
@@ -79,7 +78,6 @@ public class ChatActivity extends SwipeBackActivity implements
      * TODO
      * private PushApplication mApplication;
      */
-
     private static int MsgPagerNum;
     /**
      * TODO
@@ -97,8 +95,6 @@ public class ChatActivity extends SwipeBackActivity implements
     private WindowManager.LayoutParams params;
     private InputMethodManager imm;
     private List<String> keys;
-
-    ;
     private MsgListView mMsgListView;
     /**
      * TODO
@@ -136,7 +132,6 @@ public class ChatActivity extends SwipeBackActivity implements
                         System.currentTimeMillis(), msgItem.getMessage(),
                         headId, true, 0);
                 adapter.upDateMsg(item);
-                Log.w("到这里没有", "handle的adapter");
 //				mMsgDB.saveMsg(msgItem.getUser_id(), item);
                 RecentItem recentItem = new RecentItem(userId, headId,
                         msgItem.getNick(), msgItem.getMessage(), 0,
@@ -150,14 +145,12 @@ public class ChatActivity extends SwipeBackActivity implements
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.chat_main);
-        Log.w("到这里了没有", "ChatActivity的onCreate");
         initData();
         initView();
         initFacePage();
     }
 
     private void initData() {
-        Log.w("到这里了没有", "ChatActivity的initData");
 //		mFromUser = (User) getIntent().getSerializableExtra("user");
 //		if (mFromUser == null) {// 如果为空，直接关闭
 //			finish();
@@ -179,7 +172,6 @@ public class ChatActivity extends SwipeBackActivity implements
      * 加载消息历史，从数据库中读出
      */
     private List<MessageItem> initMsgData() {
-        Log.w("到这里了没有", "ChatActivity的initMsgData");
         List<MessageItem> list = new LinkedList<MessageItem>();
         List<MessageItem> msgList = new ArrayList<MessageItem>();// 消息对象数组
         if (list.size() > 0) {
@@ -198,7 +190,6 @@ public class ChatActivity extends SwipeBackActivity implements
     }
 
     private void initFacePage() {
-        Log.w("到这里了没有", "ChatActivity的initFacePage");
         // TODO Auto-generated method stub
         List<View> lv = new ArrayList<View>();
         /**
@@ -241,7 +232,6 @@ public class ChatActivity extends SwipeBackActivity implements
     }
 
     private GridView getGridView(int i) {
-        Log.w("到这里了没有", "ChatActivity的getGridView");
         // TODO Auto-generated method stub
         GridView gv = new GridView(this);
         gv.setNumColumns(7);
@@ -332,7 +322,6 @@ public class ChatActivity extends SwipeBackActivity implements
     }
 
     private void initView() {
-        Log.w("到这里了没有", "ChatActivity的initView");
         // TODO Auto-generated method stub
         imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
         params = getWindow().getAttributes();
@@ -416,7 +405,6 @@ public class ChatActivity extends SwipeBackActivity implements
     }
 
     public void onMessage(flaychat.cn.flychat.chat.bean.Message message) {
-        Log.w("到这里了没有", "ChatActivity的onMessage");
         Message handlerMsg = handler.obtainMessage(NEW_MESSAGE);
         handlerMsg.obj = message;
         handler.sendMessage(handlerMsg);
@@ -424,8 +412,6 @@ public class ChatActivity extends SwipeBackActivity implements
 
     public void onBind(String method, int errorCode, String content) {
         // TODO Auto-generated method stub
-
-        Log.w("到这里了没有", "ChatActivity的onBind");
 
     }
 
@@ -473,7 +459,6 @@ public class ChatActivity extends SwipeBackActivity implements
                 new SendMsgAsyncTask(msg, "1111")
                         .send();
 
-                Log.w("到这里没有", "send完成了");
 //                    RecentItem recentItem = new RecentItem(mFromUser.getUserId(),
 //                            mFromUser.getHeadIcon(), mFromUser.getNick(), msg, 0,
 //                            System.currentTimeMillis());
@@ -511,7 +496,6 @@ public class ChatActivity extends SwipeBackActivity implements
         mMsgListView.setSelection(adapter.getCount() - position - 1);
         L.i("MsgPagerNum = " + MsgPagerNum + ", adapter.getCount() = "
                 + adapter.getCount());
-        Log.w("到这里没有", "onRefresh");
     }
 
     @Override
@@ -524,7 +508,6 @@ public class ChatActivity extends SwipeBackActivity implements
                 isFaceShow = false;
                 break;
             case R.id.msg_et:
-                Log.w("到这里了没有", "ChatActivity的点击输入框ontouch");
                 imm.showSoftInput(msgEt, 0);
                 faceLinearLayout.setVisibility(View.GONE);
                 isFaceShow = false;
@@ -535,7 +518,4 @@ public class ChatActivity extends SwipeBackActivity implements
         }
         return false;
     }
-
-
-
 }

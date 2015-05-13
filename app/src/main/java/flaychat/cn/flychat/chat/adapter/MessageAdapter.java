@@ -87,7 +87,6 @@ public class MessageAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         // TODO Auto-generated method stub
-        Log.w("到这里没有","MessageAdapter的getView");
         MessageItem item = mMsgList.get(position);
         boolean isComMsg = item.isComMeg();
         ViewHolder holder;
